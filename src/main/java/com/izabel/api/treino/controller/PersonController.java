@@ -24,7 +24,8 @@ public class PersonController {
 	private PersonService personService;
 	
 	@PostMapping
-	public ResponseEntity<Void> insert(@RequestBody Person obj){
+	public ResponseEntity<Void> insert(@RequestBody PersonNewDto objDto){
+		
 		personService.insert(obj);
 		URI uri = ServletUriComponentsBuilder.fromCurrentRequest()
 				.path("/{id}").buildAndExpand(obj.getId()).toUri();
